@@ -97,9 +97,11 @@ In events and snapshots mode, IntelliTrace captures the entire snapshot of the a
 The impact on overall stepping performance depends on your application. The overhead of taking a snapshot is around 30 ms. When a snapshot is taken, the app’s process is forked and the forked copy is suspended. When you view a snapshot, Visual Studio is attaching to the forked copy of the process. For each snapshot, Visual Studio copies only the page table and sets pages to copy-on-write. If objects on the heap change between debugger steps with associated snapshots, the respective page table is then copied, resulting in minimal memory cost. If Visual Studio detects that there is not enough memory to take a snapshot, it does not take one.
  
 ## Known Issues  
-* If you are using IntelliTrace events and snapshots mode on versions of Windows older than Windows 10 Fall Creators Update (RS3), and if the debug platform target of the application is set to x86, IntelliTrace does not take snapshots.
+* If you are using IntelliTrace events and snapshots mode on versions of Windows older than Windows 10 Fall Creators Update (RS3), and if the debug platform target of the application is set to x86, IntelliTrace does not take snapshots. 
 
-    Workaround:
+    Workarounds:
+    * If you are on Windows RS1 (below 10.0.14393.2273), [install KB4103720](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4103720).
+    * If you are on Windows RS2 (below 10.0.15063.1112), [install KB4103722](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4103722)
     * Install or upgrade to Windows 10 Fall Creators Update (RS3). 
     * Alternatively: 
         1. Install the VC++ 2015.3 v140 toolset for desktop (x86, x64) component from the Visual Studio installer.
